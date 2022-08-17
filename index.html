@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>ATEPS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="top-bar">
+        <h1 style="margin-left:20px">
+            <a href="index.html" id="main-title">ATEPS</a>
+        </h1>
+        
+        <div class="top-bar-right">
+            <div id="login-or-profile" style="margin-right:20px">
+                <!-- Default login button. Use javascript to check if already logged in. If so, switcht to profile icon-->
+                
+                <a href="login.html" id="header-login">
+                    <button>
+                    Login
+                    </button>
+                </a>
+                
+                <a href="profile.html" id="header-profile" style="display:none">
+                    <img class="user-img" src="assets/pfp.png" width="50px" height="50px">
+                </a>
+            </div>
+            <button class="hamburger" onclick="toggleHamburgerMenu()">☰</button>
+        </div>
+        <div class="hamburger-option-container" id="hamburger-menu">
+            <a class="hamburger-option" href="index.html" id="hb-home">
+                Home
+            </a>
+            <a class="hamburger-option" href="profile.html" id="hb-profile">
+                Profile
+            </a>
+            <a class="hamburger-option" href="dashboard.html" id="hb-dashboard">
+                Dashboard
+            </a>
+            <a class="hamburger-option" href="login.html" id="hb-login">
+                Login
+            </a>
+            <a class="hamburger-option" href="javascript:firebase.auth().signOut()" id="hb-signout">
+                Sign Out
+            </a>
+        </div>
+    </div>
+    <div class="full-content" style="background-color: aliceblue;">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="header-title">
+                    ATEPS
+                </h1>
+                <p class="header-subtitle">
+                    A school security system.
+                </p>
+                <br/><br/><br/>
+                <a href="order.html">
+                    <button class="custom-btn btn">
+                      Add to your School
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="sections-container">
+            <div class="section">
+                <div class="section-content">
+                    <h2 class="section-title">
+                        About our Product
+                    </h2>
+                    <p class="section-desc">
+                        ATEPS is a faster way for attendance for students AND teachers! Our product has an attachable device that can be placed anywhere accessible. To take attendance, simply scan the card at the designated area to sign in. If a student incorrectly scans the device, there is an option to manually change the attendance of someone on our simple and easy to access website. Making use of AI, we were able to eliminate every way of cheating the system. The AI will also detect if there are intruders and immediately lock the door, alerting the admin. Using an Arduino, some components and a Raspberry Pi, we made ATEPS affordable & accessible to everyone!
+                    <p/>
+                    </p>
+                </div>
+                <img class="section-img" src="assets/mainSetup.png"/>
+            </div>
+
+            <div class="section">
+                <img class="section-img" src="assets/cirBlur.png"/>
+                <div class="section-content">
+                    <h2 class="section-title">
+                        Benefits
+                    </h2>
+                    <p class="section-desc">
+                        <ul>
+                            <li>Considerably speeds up taking attendance</li>
+                            <li>Affordable</li>
+                            <li>Easy to use</li>
+                            <li>No complicated set up</li>
+                            <li>Reliable</li>
+                            <li>Simple design</li>
+                        </ul> 
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-content" style="text-align: center; margin: auto;">
+                    <h2 class="section-title" style="font-size: 300%;">
+                        Buy now for <code>$49.99</code>!
+                    </h2>
+                    <a href="order.html">
+                        <button class="custom-btn btn">
+                        Add to Your School
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer-horizontal">
+            <div class="footer-content">
+                <h3>
+                    ATEPS
+                </h3>
+                <hr>
+                <p>Akshat Sehgal</p>
+                <p>Charlie Huang</p>
+                <p>Yashmit Bhaverisetti</p>
+            </div>
+            <div class="footer-content">
+                <h3>
+                    Contact
+                </h3>
+                <hr>
+                <p><a href="mailto:charliehuang@char787.com" target="_blank">charliehuang@char787.com</a></p>
+            </div>
+            <div class="footer-content">
+                <h3>Location</h3>
+                <hr>
+                <p>Planet Earth</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="dbStuff.js"></script>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard | ATEPS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body onload="updateTable()">
+    <div class="top-bar">
+        <h1 style="margin-left: 20px">
+            <a href="index.html" id="main-title">ATEPS</a>
+        </h1>
+
+        <div class="top-bar-right">
+            <div id="login-or-profile" style="margin-right: 20px">
+                <!-- Default login button. Use javascript to check if already logged in. If so, switcht to profile icon-->
+
+                <a href="login.html" id="header-login">
+                    <button>Login</button>
+                </a>
+
+                <a href="profile.html" id="header-profile" style="display: none">
+                    <img class="user-img" src="assets/pfp.png" width="50px" height="50px" />
+                </a>
+            </div>
+            <button class="hamburger" onclick="toggleHamburgerMenu()">☰</button>
+        </div>
+        <div class="hamburger-option-container" id="hamburger-menu">
+            <a class="hamburger-option" href="index.html" id="hb-home"> Home </a>
+            <a class="hamburger-option" href="profile.html" id="hb-profile">
+                Profile
+            </a>
+            <a class="hamburger-option" href="dashboard.html" id="hb-dashboard">
+                Dashboard
+            </a>
+            <a class="hamburger-option" href="login.html" id="hb-login"> Login </a>
+            <a class="hamburger-option" href="javascript:firebase.auth().signOut()" id="hb-signout">
+                Sign Out
+            </a>
+        </div>
+    </div>
+
+    <div class="key-align">
+        <div style="height: min-content;">
+
+            <a href="live.html">
+
+                <button id="live-view-btn"
+                    style="height: min-content; font-size: 200%; border-radius: 200px; margin: 20px; margin-top: auto; margin-bottom: auto;">LIVE
+                    VIEW</button>
+            </a>
+            <button onclick="fetchAttendanceData()"
+                style="height: min-content; font-size: 200%; border-radius: 200px; margin: 20px; margin-top: auto; margin-bottom: auto;">Refresh</button>
+        </div>
+        <h4 style="height: min-content; font-size: 200%; margin: 20px; margin-top: auto; margin-bottom: auto;">
+            <i>
+                Hover over a cell to edit it.
+            </i>
+        </h4>
+        <div class="card-body">
+            <h2>
+                Key
+            </h2>
+            <div class="advice">
+                <div class="success sign">
+                    <svg style="height: 24px; width: 24px; color: rgb(0, 0, 255)" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" width="40" zoomAndPan="magnify"
+                        viewBox="0 0 30 30.000001" height="40" preserveAspectRatio="xMidYMid meet" version="1.0">
+                        <defs>
+                            <clipPath id="id1">
+                                <path
+                                    d="M 2.328125 4.222656 L 27.734375 4.222656 L 27.734375 24.542969 L 2.328125 24.542969 Z M 2.328125 4.222656 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#id1)">
+                            <path fill="rgb(13.729858%, 12.159729%, 12.548828%)"
+                                d="M 27.5 7.53125 L 24.464844 4.542969 C 24.15625 4.238281 23.65625 4.238281 23.347656 4.542969 L 11.035156 16.667969 L 6.824219 12.523438 C 6.527344 12.230469 6 12.230469 5.703125 12.523438 L 2.640625 15.539062 C 2.332031 15.84375 2.332031 16.335938 2.640625 16.640625 L 10.445312 24.324219 C 10.59375 24.472656 10.796875 24.554688 11.007812 24.554688 C 11.214844 24.554688 11.417969 24.472656 11.566406 24.324219 L 27.5 8.632812 C 27.648438 8.488281 27.734375 8.289062 27.734375 8.082031 C 27.734375 7.875 27.648438 7.679688 27.5 7.53125 Z M 27.5 7.53125 "
+                                fill-opacity="1" fill-rule="nonzero"></path>
+                        </g>
+                    </svg>
+                </div>
+                <p class="advice-text">Present</p>
+            </div>
+            <div class="advice">
+                <div class="warning sign">
+                    <svg style="height: 24px; width: 24px; color: rgb(0, 0, 0)" xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
+                        <path
+                            d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"
+                            fill="#000000"></path>
+                        <path
+                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+                            fill="#000000"></path>
+                    </svg>
+                </div>
+                <p class="advice-text">Absent</p>
+            </div>
+            <div class="advice">
+                <div class="late sign">
+                    <svg style="height: 24px; width: 24px; color: rgb(0, 0, 0)" xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
+                            fill="#000000"></path>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" fill="#000000">
+                        </path>
+                    </svg>
+                </div>
+                <p class="advice-text">Late</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="table-container">
+        <table></table>
+    </div>
+
+    <div class="footer">
+        <div class="footer-horizontal">
+            <div class="footer-content">
+                <h3>ATEPS</h3>
+                <hr />
+                <p>Akshat Sehgal</p>
+                <p>Charlie Huang</p>
+                <p>Yashmit Bhaverisetti</p>
+            </div>
+            <div class="footer-content">
+                <h3>Contact</h3>
+                <hr />
+                <p>
+                    <a href="mailto:charliehuang@char787.com" target="_blank">charliehuang@char787.com</a>
+                </p>
+            </div>
+            <div class="footer-content">
+                <h3>Location</h3>
+                <hr />
+                <p>Planet Earth</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="dbStuff.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
